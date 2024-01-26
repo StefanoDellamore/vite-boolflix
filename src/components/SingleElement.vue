@@ -10,6 +10,7 @@ export default {
         originalTitle: String,
         originalLanguage: String,
         voteAvarage: Number,
+        posterImg: String,
     },
 
     methods: {
@@ -50,7 +51,12 @@ export default {
 </script>
 
 <template>
+    
     <div>
+        <div>
+            <img class="container-img" :src="'https:image.tmdb.org/t/p/w185' + posterImg" :alt="title">
+        </div> 
+
         <div>
             {{ title }}
         </div>
@@ -65,12 +71,17 @@ export default {
 
         <div>
             {{ voteAvarage }}
-        </div> 
+        </div>
+        
     </div>
 </template>
 
 <style lang="scss" scoped>
 img {
-    height: 25px;
+    width: 25px;
+}
+
+.container-img {
+    width: 150px;
 }
 </style>

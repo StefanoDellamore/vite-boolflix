@@ -58,6 +58,7 @@ export default {
                     :originalTitle="movie.original_title"
                     :originalLanguage="movie.original_language"
                     :voteAvarage="movie.vote_average"
+                    :posterImg="movie.poster_path"
                     />                                                                                                                     
                 </li>
             </ul>
@@ -74,6 +75,7 @@ export default {
                     :originalTitle="serie.original_name"
                     :originalLanguage="serie.original_language"
                     :voteAvarage="serie.vote_average"
+                    :posterImg="serie.poster_path"
                     />                                                                                                                     
                 </li>
             </ul>
