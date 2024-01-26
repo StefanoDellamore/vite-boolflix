@@ -23,8 +23,13 @@ export default {
             axios
             .get('https://api.themoviedb.org/3/search/movie?api_key=e35ace60eab40e2d1d8f07320dbae8e6&query=' + this.store.searchText)
             .then((response) => {
-                console.log( '1', response.data);
                 this.store.movies = response.data.results;
+            });
+
+            axios
+            .get('https://api.themoviedb.org/3/search/tv?api_key=e35ace60eab40e2d1d8f07320dbae8e6&query=' + this.store.searchText)
+            .then((response) => {
+                this.store.series = response.data.results;
             });
         }
     }
