@@ -11,6 +11,11 @@
 
 .background-color {
     background-color: black;
+    padding: 0;
+}
+
+.border {
+    border: 1px solid white;
 }
 
 .style-button {
@@ -21,3 +26,13 @@
     background-color: rgb(28, 28, 28);
     color: white;
 }
+
+.container-title {
+    height: calc(100% - 10px);
+    background-color: rgb(110, 107, 107);
+}
+
+h2 {
+    padding: 10px;
+}
+

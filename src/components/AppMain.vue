@@ -48,41 +48,75 @@ export default {
 </script>
 
 <template>
-    <main>
-        <h2>movies</h2>     
-        <div>
-            <ul>
-                <li v-for="(movie, i) in store.movies" :key="i">
-                    <SingleElement 
-                    :title="movie.title"
-                    :originalTitle="movie.original_title"
-                    :originalLanguage="movie.original_language"
-                    :voteAvarage="movie.vote_average"
-                    :posterImg="movie.poster_path"
-                    />                                                                                                                     
-                </li>
-            </ul>
+    <main class="background-color">
+        <div class="container-title">
+            <h2>MOVIES</h2> 
         </div>
-
-        <br>
-
-        <h2>series</h2>     
-        <div>
-            <ul>
-                <li v-for="(serie, i) in store.series" :key="i">
-                    <SingleElement 
-                    :title="serie.name"
-                    :originalTitle="serie.original_name"
-                    :originalLanguage="serie.original_language"
-                    :voteAvarage="serie.vote_average"
-                    :posterImg="serie.poster_path"
-                    />                                                                                                                     
-                </li>
-            </ul>
+        <div class="container">                           
+            <div>
+                <ul>
+                    <li v-for="(movie, i) in store.movies" :key="i">
+                        <SingleElement 
+                        :title="movie.title"
+                        :originalTitle="movie.original_title"
+                        :originalLanguage="movie.original_language"
+                        :voteAvarage="movie.vote_average"
+                        :posterImg="movie.poster_path"
+                        />                                                                                                                     
+                    </li>
+                </ul>
+            </div>
         </div>
         
+        <br>
+
+        <div class="container-title">
+            <h2>SERIES</h2> 
+        </div>
+
+        <div class="container">
+            <div>
+                <ul>
+                    <li v-for="(serie, i) in store.series" :key="i">
+                        <SingleElement 
+                        :title="serie.name"
+                        :originalTitle="serie.original_name"
+                        :originalLanguage="serie.original_language"
+                        :voteAvarage="serie.vote_average"
+                        :posterImg="serie.poster_path"
+                        />                                                                                                                     
+                    </li>
+                </ul>
+            </div>
+        </div>
+       
   </main>
 </template>
 
 <style lang="scss" scoped>
+li {
+    list-style: none;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.container-title {
+    width: 100%;
+    margin-bottom: 10px;
+}
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+
+li {
+    flex: calc(33.33% - 10px);
+    margin-bottom: 20px;
+}
+
 </style>
