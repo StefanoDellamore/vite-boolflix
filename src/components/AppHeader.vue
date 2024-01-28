@@ -11,12 +11,20 @@ export default {
 </script>
 
 <template>
-    <header>
-        <input v-model="store.searchText" type="text" placeholder="inserisci nome film">
+    <header class="background-color">
+        <div class="container d-flex justify-content-between p-3 align-items-center">
+            <div class="logo-boolflix">
+                <img src="/img/boolflix.png" alt="Boolflix">
+            </div>
+            <div class="input">
+                <input v-model="store.searchText" type="text" placeholder="inserisci nome film">
 
-        <button @click="$emit('searchExecution')">
-            search
-        </button>
+                <button class="style-button" @click="$emit('searchExecution')">
+                    search
+                </button>
+            </div>
+        </div>
+        
     </header>
 </template>
 
