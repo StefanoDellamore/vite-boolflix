@@ -44,6 +44,9 @@ export default {
 
             return linkFlag;
         
+        },
+        getVote () {
+            return Math.ceil(this.voteAvarage / 2);
         }
     }
 }
@@ -70,7 +73,12 @@ export default {
         </div>
 
         <div>
-            {{ voteAvarage }}
+           {{ getVote() }}
+        </div>
+
+        <div>
+            <i v-for="i in getVote()" :key="i" class="fa-solid fa-star"></i>
+            <i v-for="j in (5 - getVote())" :key="j" class="fa-regular fa-star"></i>
         </div>
         
     </div>
@@ -80,7 +88,6 @@ export default {
 img {
     width: 25px;
 }
-
 .container-img {
     width: 150px;
 }
