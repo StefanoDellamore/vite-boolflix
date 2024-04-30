@@ -13,6 +13,7 @@ export default {
     },
 }
 
+//Movie
 document.addEventListener('DOMContentLoaded', () => {
     const apiKey = 'e35ace60eab40e2d1d8f07320dbae8e6';
     const defaultQuery = 'popular';
@@ -80,6 +81,74 @@ function createMovieElement(movie) {
     return movieItem;
 }
 
+//Serie
+document.addEventListener('DOMContentLoaded', () => {
+    const apiKey = 'e35ace60eab40e2d1d8f07320dbae8e6';
+    const defaultQuery = 'popular';
+
+    fetch(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${defaultQuery}`)
+        .then(response => response.json())
+        .then(data => {
+            const firstThreeSeries = data.results.slice(0, 3);
+            displaySeries(firstThreeSeries);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+});
+
+function displaySeries(series) {
+    const seriesResultsDiv = document.getElementById('serieResults');
+    seriesResultsDiv.innerHTML = '';
+
+    if (series.length === 0) {
+        seriesResultsDiv.textContent = 'No series found.';
+        return;
+    }
+
+    series.forEach(serie => {
+        const serieItem = createSerieElement(serie);
+        seriesResultsDiv.appendChild(serieItem);
+    });
+}
+
+function createSerieElement(serie) {
+    const serieItem = document.createElement('div');
+    serieItem.classList.add('serie-item');
+
+    if (serie.poster_path) {
+        const posterUrl = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
+        const posterImg = document.createElement('img');
+        posterImg.src = posterUrl;
+        posterImg.alt = serie.name;
+        serieItem.appendChild(posterImg);
+    }
+
+    const titleElement = document.createElement('h2');
+    titleElement.textContent = serie.name;
+    serieItem.appendChild(titleElement);
+
+    if (serie.overview) {
+        const overviewElement = document.createElement('p');
+        overviewElement.textContent = serie.overview;
+        serieItem.appendChild(overviewElement);
+    }
+
+    if (serie.first_air_date) {
+        const releaseDateElement = document.createElement('p');
+        releaseDateElement.textContent = `First Air Date: ${serie.first_air_date}`;
+        serieItem.appendChild(releaseDateElement);
+    }
+
+    if (serie.vote_average) {
+        const ratingElement = document.createElement('p');
+        ratingElement.textContent = `Rating: ${serie.vote_average}/10`;
+        serieItem.appendChild(ratingElement);
+    }
+
+    return serieItem;
+}
+
 </script>
 
 <template>
@@ -111,6 +180,8 @@ function createMovieElement(movie) {
         <div class="container-title">
             <h2>SERIES</h2> 
         </div>
+
+        <div id="serieResults" class="movie-grid" ></div>
 
         <div class="container">
             <div>
